@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
 import { Upload } from "lucide-react";
+import FileDropzone from "@/components/FileDropzone";
 
 export default function UploadResume() {
   const router = useRouter();
@@ -90,35 +91,7 @@ export default function UploadResume() {
               >
                 Resume (PDF only)
               </Label>
-              <div className="border-2 border-dashed border-[#E5E7EB] rounded-xl p-8 text-center hover:border-[#3B82F6] transition-colors group">
-                <Upload className="w-12 h-12 text-[#6B7280] mx-auto mb-4 group-hover:text-[#3B82F6]" />
-                <Input
-                  id="resume"
-                  type="file"
-                  accept=".pdf"
-                  onChange={handleFileChange}
-                  required
-                  className="hidden"
-                />
-                <Label
-                  htmlFor="resume"
-                  className="cursor-pointer text-[#6B7280] hover:text-[#111827]"
-                >
-                  {file ? (
-                    <span className="text-[#111827] font-medium">
-                      {file.name}
-                    </span>
-                  ) : (
-                    <>
-                      <span className="text-[#111827] font-medium">
-                        Click to upload
-                      </span>
-                      <span className="text-[#6B7280]"> or drag and drop</span>
-                    </>
-                  )}
-                </Label>
-                <p className="text-sm text-[#6B7280] mt-2">PDF files only</p>
-              </div>
+              <FileDropzone file={file} setFile={setFile} />
             </div>
 
             <Button
